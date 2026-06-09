@@ -44,45 +44,45 @@ The output image is visually indistinguishable from the original. Only someone u
 ### Encoding
 
 ```
-Message + Password
-       │
-       ▼
-[AES-256-CBC Encryption]  ← optional, skipped if no password
-       │
-       ▼
-Prepend Header Token  →  "M6nMjy5THr2J" + payload
-       │
-       ▼
-For each character in payload:
-  → Convert to 8-bit binary
-  → Read 3 consecutive pixels (9 RGB channel values)
-  → Force LSB of channels 1–8 to match each binary digit
-  → Set channel 9 as stop-flag: odd = end, even = continue
-  → Write pixels back to image
-       │
-       ▼
-Save as <filename>-enc.png
+                     Message + Password
+                            │
+                            ▼
+  [AES-256-CBC Encryption]  ← optional, skipped if no password
+                            │
+                            ▼
+     Prepend Header Token  →  "M6nMjy5THr2J" + payload
+                            │
+                            ▼
+       For each character in payload:
+                → Convert to 8-bit binary
+                → Read 3 consecutive pixels (9 RGB channel values)
+                → Force LSB of channels 1–8 to match each binary digit
+                → Set channel 9 as stop-flag: odd = end, even = continue
+                → Write pixels back to image
+                            │
+                            ▼
+              Save as <filename>-enc.png
 ```
 
 ### Decoding
 
 ```
-Load encoded image
-       │
-       ▼
-Read LSBs of 3-pixel groups → reconstruct characters → stop at sentinel
-       │
-       ▼
-Validate outer header token
-       │
-       ▼
-[AES-256-CBC Decrypt]  ← if password provided
-       │
-       ▼
-Validate inner header token  →  confirm correct password
-       │
-       ▼
-Output hidden message
+                            Load encoded image
+                                   │
+                                   ▼
+   Read LSBs of 3-pixel groups → reconstruct characters → stop at sentinel
+                                   │
+                                   ▼
+                      Validate outer header token
+                                   │
+                                   ▼
+              [AES-256-CBC Decrypt]  ← if password provided
+                                   │
+                                   ▼
+         Validate inner header token  →  confirm correct password
+                                   │
+                                   ▼
+                        Output hidden message
 ```
 
 ---
@@ -240,7 +240,7 @@ SecretSnap/
 
 **Teja Sumanth**
 
-Incoming M.Sc. Cybersecurity Student · Paderborn University, Germany
+Cybersecurity | Artificial Intelligence | Machine Learning | Software Engineering | Building Secure & Intelligent Systems
 
 [![GitHub](https://img.shields.io/badge/GitHub-tejasumantht-181717?style=flat-square&logo=github)](https://github.com/tejasumantht)
 [![Email](https://img.shields.io/badge/Email-tejasumanth.t%40gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:tejasumanth.t@gmail.com)
